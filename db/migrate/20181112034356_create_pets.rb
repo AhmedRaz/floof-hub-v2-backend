@@ -11,8 +11,9 @@ class CreatePets < ActiveRecord::Migration[5.2]
       t.boolean :single_pet
       t.boolean :family_friendly
       t.integer :shelter_id
-      t.integer :user_id
+      t.integer :user_id, optional: true
       t.boolean :adoption_status, default: false
+      t.string :image_source, array: true, default: []
       t.timestamps
     end
   end
