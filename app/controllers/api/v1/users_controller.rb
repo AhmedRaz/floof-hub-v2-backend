@@ -12,6 +12,16 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
+  def index
+    @users = User.filter(params.slice(:company))
+    render json: @users
+  end
+
+# GET /users/1
+def show
+  render json: @user
+end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
