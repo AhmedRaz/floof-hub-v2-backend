@@ -1,5 +1,17 @@
 class Api::V1::UsersController < ApplicationController
 
+  # POST /users
+  def create
+
+    @user = User.new(user_params)
+
+    if @user.save
+      render json: { token: issue_token({ id: @user.id }) }
+    else
+      render json: { error: "User not created" }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
