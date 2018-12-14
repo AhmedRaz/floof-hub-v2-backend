@@ -1,2 +1,5 @@
 class PetImage < ApplicationRecord
-end
+  include Filterable
+  belongs_to :pet
+
+end 
